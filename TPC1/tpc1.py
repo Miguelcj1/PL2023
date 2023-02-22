@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 
 '''
 Max Idade : 77
@@ -109,17 +111,18 @@ def distribuicaoColesterol(a):
     return finalDist
 
 
-def print_dict_table(title, key_title, value_title, dictionary):
+def printTable(title, key_title, value_title, dictionary):
     print()
     print(f"{title}\n{key_title:<15} | {value_title}")
     print("-" * 25)
     for key, value in dictionary.items():
         print(f"{str(key):<15} | {value}")
-
+    print()
 
 
 
 a = loadCSV()
+
 
 menu = """
 ------------------Menu------------------
@@ -135,23 +138,46 @@ opcao = int(input("Opção: "))
 while opcao != 0:
     if opcao == 1:
         distS = distribuicaoSexo(a)
-        print_dict_table("Distribuição por sexo", "Sexo", "Total", distS) 
-        print()
+        printTable("Distribuição por sexo", "Sexo", "Total", distS) 
+
+        # Gráfico da distribuição de sexo
+        plt.subplot(1, 3, 1)
+        # values = distr_sex.values()
+        plt.bar(distS.keys(),distS.values())
+        plt.title('Distribuição pelo sexo')
+        plt.show()
+
 
     elif opcao == 2:
         distE = distribuicaoEtaria(a)
-        print_dict_table("Distribuição Etária", "Idade", "Total", distE)
-        print()
+        printTable("Distribuição Etária", "Idade", "Total", distE)
+
+        # Gráfico da distribuição de idade
+        plt.subplot(1, 3, 2)
+        ageKeys = list(map(lambda x: str(x).replace('(','[').replace(')',']'),distE.keys()))
+        plt.barh(ageKeys, list(distE.values()))
+        plt.title('Distribuição pela idade')
+        plt.show()
+
 
     elif opcao == 3:
         distC = distribuicaoColesterol(a)
         #Remove Entries with value 0
-        #distC = {x:y for x,y in distC.items() if y!=0}
+        distC = {x:y for x,y in distC.items() if y!=0}
 
-        print_dict_table("Distribuição por Colestrol", "Colestrol", "Total", distC)
-        print()
-    
-    input("Prime Enter para continuar")
+        printTable("Distribuição por Colestrol", "Colestrol", "Total", distC)
+
+        # Gráfico da distribuição de níveis de colesterol
+        plt.subplot(1, 3, 3)
+        colKeys = list(map(lambda x: str(x).replace('(','[').replace(')',']'),distC.keys()))
+        plt.barh(colKeys, list(distC.values()))
+        plt.title('Distribuição pelos níveis de colesterol')
+        plt.show()
+
+    else:
+        print("Opção Inválida!")
+        
+    input("Pressione Enter para continuar!")
 
     print(menu)
     opcao = int(input("Opção: "))
