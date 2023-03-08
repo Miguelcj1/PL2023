@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "Número": "3162",
+      "Nome": "Cândido Faísca",
+      "Curso": "Teatro",
+      "Notas_media": "13.0",
+      "Tpc": [
+        "True",
+        "False",
+        "True",
+        "False",
+        "True",
+        "False",
+        "True",
+        "False"
+      ]
+    },
+    {
+      "Número": "7777",
+      "Nome": "Cristiano Ronaldo",
+      "Curso": "Desporto",
+      "Notas_media": "14.4",
+      "Tpc": [
+        "False",
+        "True",
+        "False",
+        "True",
+        "False",
+        "True",
+        "False",
+        "True"
+      ]
+    },
+    {
+      "Número": "264",
+      "Nome": "Marcelo Sousa",
+      "Curso": "Ciência Política",
+      "Notas_media": "19.0",
+      "Tpc": [
+        "False",
+        "False",
+        "True",
+        "True",
+        "False",
+        "False",
+        "True",
+        "True"
+      ]
+    }
+  ]
+}
