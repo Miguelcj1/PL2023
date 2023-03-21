@@ -87,7 +87,7 @@ def t_on_NUMERO(t):
     r'T\s*=\s*([\d{9}|00\d{9}]{9,11})'
     numero = t.value
     numero = re.search(r'\d+', numero).group(0)
-    print(numero)
+    # print(numero)
 
     if (re.match(r'(601|641)\d+', numero)):
         print('Esse número não é permitido neste telefone. Queira discar novo número!')
